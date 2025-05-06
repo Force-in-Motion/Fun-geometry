@@ -1,27 +1,42 @@
-# import turtle
-#
-#
-# class Program:
-#
-#     @staticmethod
-#     def main():
-#         circle = Circle(50)
-#         colored_circle = ColorDecorator(circle, "red")
-#         thick_colored_circle = ThicknessDecorator(colored_circle, 5)
-#
-#         square = Square(100)
-#         colored_square = ColorDecorator(square, "blue")
-#         thick_colored_square = ThicknessDecorator(colored_square, 3)
-#
-#         # Draw shapes
-#         thick_colored_circle.draw()
-#         colored_square.turtle.penup()
-#         colored_square.turtle.goto(200, 0)
-#         colored_square.turtle.pendown()
-#         thick_colored_square.draw()
-#
-#         turtle.done()
-#
-#
-# if __name__ == "__main__":
-#     Program.main()
+import turtle
+from src.model.figures import *
+from src.model.upgrade import *
+from src.tools.request import RequestUser as ru
+from src.config.output_mess import output_msg
+class Program:
+
+    def __init__(self):
+        self.__turtle = turtle
+        self.__pointer = None
+        self.__screen_width = None
+        self.__screen_height = None
+
+
+
+
+
+
+    @staticmethod
+    def main():
+        print(output_msg.get('greetings'))
+
+        while True:
+            ru.get_screen_size()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    Program.main()

@@ -1,8 +1,4 @@
-
-
-from src.config.output_mess import *
-from src.interface.figures import AFigure, AUpgrade
-
+from src.interface.figures import AFigure
 
 
 
@@ -14,16 +10,10 @@ class Star(AFigure):
         self.__angle = self.__count_angles // 2 * 360 / self.__count_angles
 
 
-    def draws(self):
-        if  self._rotation_angle % 2 != 0:
-
-            for elem in range(0, self.__count_angles, 1):
-                self._pointer.forward(self._length)
-                self._pointer.left(self.__angle)
-
-        else:
-            print(err_input_star)
-
+    def draws(self) -> None:
+        for elem in range(0, self.__count_angles, 1):
+            self._pointer.forward(self._length)
+            self._pointer.left(self.__angle)
 
 
 
@@ -36,7 +26,6 @@ class Polygon(AFigure):
 
 
     def draws(self):
-
         for elem in range(0, self.__count_angles, 1):
             self._pointer.forward(self._length)
             self._pointer.left(self._rotation_angle)

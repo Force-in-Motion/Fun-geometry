@@ -1,10 +1,6 @@
 import time
+from src.interface.figures import AUpgrade
 
-from src.model.figures import *
-import turtle
-
-
-pointer = turtle.Turtle()
 
 
 class ColorFigure(AUpgrade):
@@ -32,6 +28,7 @@ class DrawSpeed(AUpgrade):
     def draws(self) -> None:
         self._pointer.speed(self.__speed)
         self._wrapper.draws()
+        time.sleep()
 
 
 
@@ -47,12 +44,22 @@ class PenSize(AUpgrade):
         self._wrapper.draws()
 
 
+    class Timer(AUpgrade):
+
+        def __init__(self, pointer, time, wrapper):
+            super().__init__(pointer, wrapper)
+            self.__time = time
+
+        def draws(self) -> None:
+            self._wrapper.draws()
+            time.sleep(self.__time)
+
+
 class ScreenColor(AUpgrade):
 
     def __init__(self, turtle, pointer, wrapper, color: str, width: int, height: int):
         super().__init__(pointer, wrapper)
         self._turtle = turtle
-
         self.__window = turtle.Screen()
         self.__window.bgcolor(color)
         self.__window.setup(width=width, height=height)
@@ -61,14 +68,3 @@ class ScreenColor(AUpgrade):
         self._wrapper.draws()
 
 
-
-
-s = Star(pointer, 100, 5)
-s = ColorFigure(pointer,'green', s)
-s = DrawSpeed(pointer, 2, s)
-s = PenSize(pointer, 5, s)
-s = ScreenColor(turtle, pointer, s,'yellow', 1000, 400, )
-
-
-s.draws()
-time.sleep(3)
