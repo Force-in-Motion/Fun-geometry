@@ -12,15 +12,15 @@ class Program:
         self.__turtle = turtle
         self.__figure = None
         self.__pointer = None
-        self.__screen_width = None
-        self.__screen_height = None
+        self.__window_width = None
+        self.__window_height = None
 
 
     def main(self):
         print(menu_msg.get('greetings'))
 
         while True:
-            self.__screen_width, self.__screen_height = ru.get_screen_size()
+            self.__window_width, self.__window_height = ru.get_screen_size()
 
             index = ru.get_index_figure()
 

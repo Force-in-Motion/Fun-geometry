@@ -4,8 +4,8 @@ from src.interface.figures import AFigure
 
 class Star(AFigure):
 
-    def __init__(self, pointer, length, count_angles):
-        super().__init__(pointer, length, count_angles)
+    def __init__(self, pointer, side_length, count_angles):
+        super().__init__(pointer, side_length, count_angles)
         self.__count_angles = count_angles
         self.__angle = self.__count_angles // 2 * 360 / self.__count_angles
 
@@ -20,8 +20,8 @@ class Star(AFigure):
 
 class Polygon(AFigure):
 
-    def __init__(self, pointer, length, count_angles):
-        super().__init__(pointer, length, 360 / count_angles)
+    def __init__(self, pointer, side_length, count_angles):
+        super().__init__(pointer, side_length, 360 / count_angles)
         self.__count_angles = count_angles
 
 
