@@ -2,26 +2,31 @@ import turtle
 from src.model.figures import *
 from src.model.upgrade import *
 from src.tools.request import RequestUser as ru
-from src.config.output_mess import output_msg
+from src.config.output_mess import menu_msg
+from src.config.figures import figure
+
+
+
+
 class Program:
 
     def __init__(self):
         self.__turtle = turtle
+        self.__figure = None
         self.__pointer = None
         self.__screen_width = None
         self.__screen_height = None
 
 
-
-
-
-
-    @staticmethod
-    def main():
-        print(output_msg.get('greetings'))
+    def main(self):
+        print(menu_msg.get('greetings'))
 
         while True:
-            ru.get_screen_size()
+            self.__screen_width, self.__screen_height = ru.get_screen_size()
+
+            index = ru.get_index_figure()
+
+            self.__figure = figure.get(index)()
 
 
 
@@ -39,4 +44,5 @@ class Program:
 
 
 if __name__ == "__main__":
-    Program.main()
+    p = Program()
+    p.main()

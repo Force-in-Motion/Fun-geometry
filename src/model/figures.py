@@ -46,13 +46,8 @@ class Polygon(AFigure):
 
 
 
-#
-# class Triangle:
-#     def __init__(self):
-#         pass
-#
-#
-#
-# class Circle:
-#     def __init__(self):
-#         pass
+
+
+class Circle:
+    def __init__(self):
+        pass

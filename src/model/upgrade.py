@@ -28,7 +28,7 @@ class DrawSpeed(AUpgrade):
     def draws(self) -> None:
         self._pointer.speed(self.__speed)
         self._wrapper.draws()
-        time.sleep()
+
 
 
 
