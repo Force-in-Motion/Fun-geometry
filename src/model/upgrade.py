@@ -31,7 +31,6 @@ class DrawSpeed(AUpgrade):
 
 
 
-
 class PenSize(AUpgrade):
 
     def __init__(self, pointer, size, wrapper):
@@ -44,15 +43,17 @@ class PenSize(AUpgrade):
         self._wrapper.draws()
 
 
-    class Timer(AUpgrade):
 
-        def __init__(self, pointer, time, wrapper):
-            super().__init__(pointer, wrapper)
-            self.__time = time
+class Timer(AUpgrade):
 
-        def draws(self) -> None:
-            self._wrapper.draws()
-            time.sleep(self.__time)
+    def __init__(self, pointer, time, wrapper):
+        super().__init__(pointer, wrapper)
+        self.__time = time
+
+    def draws(self) -> None:
+        self._wrapper.draws()
+        time.sleep(self.__time)
+
 
 
 class ScreenColor(AUpgrade):

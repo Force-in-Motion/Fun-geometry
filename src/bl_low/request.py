@@ -16,6 +16,7 @@ class RequestUser:
 
         return width, height
 
+
     @staticmethod
     def get_screen_size():
         size = RequestUser.get_max_screen_size()

@@ -1,7 +1,5 @@
 import turtle
-from src.model.figures import *
-from src.model.upgrade import *
-from src.tools.request import RequestUser as ru
+from src.bl_low.request import RequestUser as ru
 from src.config.output_mess import menu_msg
 from src.config.figures import figure
 
