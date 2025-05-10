@@ -1,4 +1,5 @@
-import time
+import turtle
+
 from src.interface.figures import AUpgradeFigure
 
 
@@ -47,9 +48,12 @@ class Timer(AUpgradeFigure):
         super().__init__(pointer, wrapper)
         self.__action_time = action_time
 
+    def __close_window(self):
+        turtle.bye()
+
     def draws(self) -> None:
         self._wrapper.draws()
-        time.sleep(self.__action_time)
+        turtle.ontimer(self.__close_window, self.__action_time * 1000)
 
 
 

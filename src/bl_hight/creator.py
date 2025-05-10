@@ -3,8 +3,7 @@ from src.model.figures import Screen
 
 class FigureCreator:
 
-    def __init__(self, pointer, config_figures, config_upgrade, request_user):
-        self.__pointer = pointer
+    def __init__(self, config_figures, config_upgrade, request_user):
         self.__config_figures = config_figures
         self.__config_upgrade = config_upgrade
         self.__request_user = request_user
@@ -52,24 +51,24 @@ class FigureCreator:
         self.__action_time = self.__request_user.get_action_time()
 
 
-    def create_figure(self):
-        figure = self.__config_figures.get(self.__index_figure)(self.__pointer, self.__side_length, self.__count_angles)
+    def create_figure(self, pointer):
+        print(self.__index_figure)
+        figure = self.__config_figures.get(self.__index_figure)(pointer, self.__side_length, self.__count_angles)
 
-        figure = self.__config_upgrade.get('color_figure')(self.__pointer, self.__figure_color, figure)
+        figure = self.__config_upgrade.get('color_figure')(pointer, self.__figure_color, figure)
 
-        figure = self.__config_upgrade.get('draw_speed')(self.__pointer, self.__speed_pointer, figure)
+        figure = self.__config_upgrade.get('draw_speed')(pointer, self.__speed_pointer, figure)
 
-        figure = self.__config_upgrade.get('pen_size')(self.__pointer, self.__pen_size, figure)
+        figure = self.__config_upgrade.get('pen_size')(pointer, self.__pen_size, figure)
 
-        figure = self.__config_upgrade.get('timer')(self.__pointer, self.__action_time, figure)
+        figure = self.__config_upgrade.get('timer')(pointer, self.__action_time, figure)
 
         return figure
 
 
 class ScreenCreator:
 
-    def __init__(self, turtle, screen, request_user):
-        self.__turtle = turtle
+    def __init__(self, request_user):
         self.__request_user = request_user
         self.__window_width = None
         self.__window_height = None
@@ -85,7 +84,7 @@ class ScreenCreator:
         self.__window_color = self.__request_user.get_color_screen()
 
 
-    def create_window(self):
-        window = Screen(self.__turtle, self.__window_width, self.__window_height, self.__window_color)
+    def create_window(self, turtle):
+        window = Screen(turtle, self.__window_width, self.__window_height, self.__window_color)
 
         return window

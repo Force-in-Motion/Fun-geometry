@@ -1,9 +1,8 @@
 import tkinter as tk
-from curses.ascii import isdigit
 
 import matplotlib.colors as colors
 from src.bl_low.response import ResponseUser as ru
-from src.config.output_mess import menu_msg
+from src.config.output_mess import menu_msg, request_data, err_msg
 from src.config.config_figures import figure_index
 
 
@@ -31,8 +30,8 @@ class RequestUser:
             screen_width = input(f"Введите ширину окна (максимум {size[0]}): ")
             screen_height = input(f"Введите высоту окна (максимум {size[1]}): ")
 
-            if not isdigit(screen_width) or not isdigit(screen_height) or int(screen_width) > size[0] or int(screen_height) > size[1]:
-                print(menu_msg.get('err_screen_size'))
+            if not screen_width.isdigit() or not screen_height.isdigit() or int(screen_width) > size[0] or int(screen_height) > size[1]:
+                print(err_msg.get('err_screen_size'))
                 continue
 
             return int(screen_width), int(screen_height)
@@ -45,10 +44,10 @@ class RequestUser:
         ru.provides_data(list_colors)
 
         while True:
-            color_screen = input(menu_msg.get('color_screen'))
+            color_screen = input(request_data.get('color_screen'))
 
             if color_screen not in  list_colors:
-                print(menu_msg.get('err_color'))
+                print(err_msg.get('err_color'))
                 continue
 
             return color_screen
@@ -60,11 +59,11 @@ class RequestUser:
         while True:
             index = input(menu_msg.get('index_figure'))
 
-            if not isdigit(index) or int(index) not in figure_index:
-                print(menu_msg.get('err_figure_index'))
+            if not index.isdigit() or index not in figure_index:
+                print(err_msg.get('err_figure_index'))
                 continue
 
-            return int(index)
+            return index
 
 
     @staticmethod
@@ -72,10 +71,10 @@ class RequestUser:
         size = RequestUser.get_max_screen_size()
 
         while True:
-            side_length = input(menu_msg.get('side_length'))
+            side_length = input(request_data.get('side_length'))
 
-            if not isdigit(side_length) or  int(side_length) >= size[0] - 100 or int(side_length) >= size[1] - 100:
-                print(menu_msg.get('err_side_length'))
+            if not side_length.isdigit() or  int(side_length) >= size[0] - 100 or int(side_length) >= size[1] - 100:
+                print(err_msg.get('err_side_length'))
                 continue
 
             return int(side_length)
@@ -85,13 +84,13 @@ class RequestUser:
     def get_count_angles_figure():
 
         while True:
-            count_angles = input(menu_msg.get('count_angles'))
+            count_angles = input(request_data.get('count_angles'))
 
-            if not isdigit(count_angles) or  int(count_angles) > 50 :
-                print(menu_msg.get('err_count_angles'))
+            if not count_angles.isdigit() or  int(count_angles) > 50 :
+                print(err_msg.get('err_count_angles'))
                 continue
 
-            return count_angles
+            return int(count_angles)
 
 
     @staticmethod
@@ -101,10 +100,10 @@ class RequestUser:
         ru.provides_data(list_colors)
 
         while True:
-            color_figure = input(menu_msg.get('color_figure'))
+            color_figure = input(request_data.get('color_figure'))
 
             if color_figure not in  list_colors:
-                print(menu_msg.get('err_color'))
+                print(err_msg.get('err_color'))
                 continue
 
             return color_figure
@@ -114,36 +113,36 @@ class RequestUser:
     def get_speed_pointer():
 
         while True:
-            speed_pointer = input(menu_msg.get('speed_pointer'))
+            speed_pointer = input(request_data.get('speed_pointer'))
 
-            if not isdigit(speed_pointer) or int(speed_pointer) > 100:
-                print(menu_msg.get('err_speed_pointer'))
+            if not speed_pointer.isdigit() or int(speed_pointer) > 100:
+                print(err_msg.get('err_speed_pointer'))
                 continue
 
-            return speed_pointer
+            return int(speed_pointer)
 
 
     @staticmethod
     def get_pen_size():
 
         while True:
-            pen_size = input(menu_msg.get('pen_size'))
+            pen_size = input(request_data.get('pen_size'))
 
-            if not isdigit(pen_size) or int(pen_size) > 100:
-                print(menu_msg.get('err_pen_size'))
+            if not pen_size.isdigit() or int(pen_size) > 100:
+                print(err_msg.get('err_pen_size'))
                 continue
 
-            return pen_size
+            return int(pen_size)
 
 
     @staticmethod
     def get_action_time():
 
         while True:
-            action_time = input(menu_msg.get('action_time'))
+            action_time = input(request_data.get('action_time'))
 
-            if not isdigit(action_time) :
-                print(menu_msg.get('err_action_time'))
+            if not action_time.isdigit():
+                print(err_msg.get('err_action_time'))
                 continue
 
-            return action_time
+            return int(action_time)
