@@ -1,5 +1,3 @@
-import matplotlib.colors as colors
-
 
 
 class ResponseUser:

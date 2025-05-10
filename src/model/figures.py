@@ -1,4 +1,4 @@
-from src.interface.figures import AFigure
+from src.interface.figures import AFigure, AScreen
 
 
 
@@ -33,8 +33,16 @@ class Polygon(AFigure):
 
 
 
+class Screen(AScreen):
 
+    def __init__(self, turtle, window_width: int, window_height: int, window_color):
+        super().__init__(turtle, window_width, window_height)
+        self._window_color = window_color
 
+    def draws(self) -> None:
+        self._window = self._turtle.Screen()
+        self._window.setup(width=self._window_width, height=self._window_height)
+        self._window.bgcolor(self._window_color)
 
 
 

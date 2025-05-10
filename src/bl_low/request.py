@@ -4,7 +4,7 @@ from curses.ascii import isdigit
 import matplotlib.colors as colors
 from src.bl_low.response import ResponseUser as ru
 from src.config.output_mess import menu_msg
-from src.config.figures import figure_index
+from src.config.config_figures import figure_index
 
 
 
@@ -36,6 +36,22 @@ class RequestUser:
                 continue
 
             return int(screen_width), int(screen_height)
+
+
+    @staticmethod
+    def get_color_screen():
+        list_colors = list(colors.CSS4_COLORS)
+
+        ru.provides_data(list_colors)
+
+        while True:
+            color_screen = input(menu_msg.get('color_screen'))
+
+            if color_screen not in  list_colors:
+                print(menu_msg.get('err_color'))
+                continue
+
+            return color_screen
 
 
     @staticmethod
@@ -88,7 +104,7 @@ class RequestUser:
             color_figure = input(menu_msg.get('color_figure'))
 
             if color_figure not in  list_colors:
-                print(menu_msg.get('err_color_figure'))
+                print(menu_msg.get('err_color'))
                 continue
 
             return color_figure
@@ -105,7 +121,6 @@ class RequestUser:
                 continue
 
             return speed_pointer
-
 
 
     @staticmethod
@@ -132,62 +147,3 @@ class RequestUser:
                 continue
 
             return action_time
-
-
-
-
-#
-#
-# # Определяем размеры фигур
-# def get_figure_size(figure_type, size):
-#     if figure_type == "star":
-#         return size * 2  # Примерный размер звезды
-#     elif figure_type == "circle":
-#         return size * 2  # Диаметр круга
-#     elif figure_type == "rectangle":
-#         return size * 2, size  # Ширина и высота прямоугольника
-#     # Добавьте другие фигуры по мере необходимости
-#     return size
-#
-#
-# # Универсальный метод для проверки размещения фигур в окне
-# def can_fit_in_window(window_width, window_height, figures):
-#     total_width = 0
-#     max_height = 0
-#
-#     for figure in figures:
-#         figure_type = figure['type']
-#         size = figure['size']
-#
-#         if figure_type in ["star", "circle"]:
-#             width = get_figure_size(figure_type, size)
-#             height = width  # Для звезды и круга ширина равна высоте
-#         elif figure_type == "rectangle":
-#             width, height = get_figure_size(figure_type, size)
-#
-#         total_width += width
-#
-#         if height > max_height:
-#             max_height = height
-#
-#     # Проверяем помещается ли общая ширина и максимальная высота в окно
-#     return total_width <= window_width and max_height <= window_height
-#
-#
-# # Пример использования
-# window_width = 800
-# window_height = 600
-#
-# # Список фигур с их типами и размерами
-# figures = [
-#     {'type': 'star', 'size': 20},
-#     {'type': 'circle', 'size': 30},
-#     {'type': 'rectangle', 'size': 40}  # Прямоугольник с размером стороны 40 (ширина и высота)
-# ]
-#
-# if can_fit_in_window(window_width, window_height, figures):
-#     print("Все фигуры помещаются в окно.")
-# else:
-#     print("Фигуры не помещаются в окно.")
-#
-
