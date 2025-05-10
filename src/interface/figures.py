@@ -5,13 +5,14 @@ class AFigure(ABC):
 
     def __init__(self, pointer, side_length: int, rotation_angle: float):
         self._pointer = pointer
-        self._length = side_length
+        self._side_length = side_length
         self._rotation_angle = rotation_angle
 
 
     @abstractmethod
     def draws(self) -> None:
         pass
+
 
 
 
@@ -24,6 +25,7 @@ class AUpgradeFigure(ABC):
 
     def draws(self) -> None:
         pass
+
 
 
 

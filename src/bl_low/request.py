@@ -9,9 +9,14 @@ from src.config.config_figures import figure_index
 
 
 class RequestUser:
+    """ Содержит служебные методы, возвращающие данные от пользователя прошедшие валидацию """
 
     @staticmethod
-    def get_max_screen_size():
+    def get_max_screen_size() -> tuple[int, int]:
+        """
+        Возвращает максимальную ширину и высоту экрана машины, на которой используется приложение
+        :return: tuple[int, int]
+        """
         root = tk.Tk()
         width = root.winfo_screenwidth()
         height = root.winfo_screenheight()
@@ -21,7 +26,11 @@ class RequestUser:
 
 
     @staticmethod
-    def get_screen_size():
+    def get_screen_size() -> tuple[int, int]:
+        """
+        Возвращает, заданные пользователем, размеры холста приложения
+        :return: tuple[int, int]
+        """
         size = RequestUser.get_max_screen_size()
 
         print(menu_msg.get('screen_size'))
@@ -38,7 +47,11 @@ class RequestUser:
 
 
     @staticmethod
-    def get_color_screen():
+    def get_color_screen() -> str:
+        """
+        Возвращает, заданный пользователем, цвет холста приложения
+        :return: str
+        """
         list_colors = list(colors.CSS4_COLORS)
 
         ru.provides_data(list_colors)
@@ -54,8 +67,11 @@ class RequestUser:
 
 
     @staticmethod
-    def get_index_figure():
-
+    def get_index_figure() -> str:
+        """
+        Возвращает, заданный пользователем, индекс фигуры
+        :return: str
+        """
         while True:
             index = input(menu_msg.get('index_figure'))
 
@@ -67,13 +83,17 @@ class RequestUser:
 
 
     @staticmethod
-    def get_side_length_figure():
+    def get_side_length_figure() -> int:
+        """
+        Возвращает, заданную пользователем, длину стороны фигуры
+        :return: int
+        """
         size = RequestUser.get_max_screen_size()
 
         while True:
             side_length = input(request_data.get('side_length'))
 
-            if not side_length.isdigit() or  int(side_length) >= size[0] - 100 or int(side_length) >= size[1] - 100:
+            if not side_length.isdigit() or  int(side_length) * 2 >= size[0] or int(side_length) * 2 >= size[1]:
                 print(err_msg.get('err_side_length'))
                 continue
 
@@ -81,8 +101,11 @@ class RequestUser:
         
 
     @staticmethod
-    def get_count_angles_figure():
-
+    def get_count_angles_figure() -> int:
+        """
+        Возвращает, заданное пользователем, количество углов фигуры
+        :return: int
+        """
         while True:
             count_angles = input(request_data.get('count_angles'))
 
@@ -94,7 +117,11 @@ class RequestUser:
 
 
     @staticmethod
-    def get_color_figure():
+    def get_color_figure() -> str:
+        """
+        Возвращает, заданный пользователем, цвет фигуры
+        :return: str
+        """
         list_colors = list(colors.CSS4_COLORS)
 
         ru.provides_data(list_colors)
@@ -110,8 +137,11 @@ class RequestUser:
 
 
     @staticmethod
-    def get_speed_pointer():
-
+    def get_speed_pointer() -> int:
+        """
+        Возвращает, заданную пользователем, скорость отрисовки фигуры
+        :return: int
+        """
         while True:
             speed_pointer = input(request_data.get('speed_pointer'))
 
@@ -123,8 +153,11 @@ class RequestUser:
 
 
     @staticmethod
-    def get_pen_size():
-
+    def get_pen_size() -> int:
+        """
+        Возвращает, заданную пользователем, толщину пера
+        :return: int
+        """
         while True:
             pen_size = input(request_data.get('pen_size'))
 
@@ -136,8 +169,11 @@ class RequestUser:
 
 
     @staticmethod
-    def get_action_time():
-
+    def get_action_time() -> int:
+        """
+        Возвращает, заданное пользователем, время действия фигуры
+        :return: int
+        """
         while True:
             action_time = input(request_data.get('action_time'))
 

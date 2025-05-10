@@ -1,25 +1,24 @@
 import turtle
-
 from src.bl_hight.creator import FigureCreator, ScreenCreator
-from src.bl_low.request import RequestUser
-from src.config.output_mess import menu_msg
-from src.config.config_figures import *
+from src.config.output_mess import *
 
 
 class Program:
+    """ Ключевой объект приложения """
 
-    def __init__(self):
-        self.__request_user = RequestUser()
-
-
-    def main(self):
+    @staticmethod
+    def main() -> None:
+        """
+        Запускает главный жизненный цикл приложения
+        :return:
+        """
         print(menu_msg.get('greetings'))
 
         while True:
 
-            screen_creator = ScreenCreator(self.__request_user)
+            screen_creator = ScreenCreator()
 
-            figure_creator = FigureCreator(config_figures, config_upgrade, self.__request_user)
+            figure_creator = FigureCreator()
 
             pointer = turtle.Turtle()
 
@@ -33,14 +32,12 @@ class Program:
 
             turtle.mainloop()
 
-            continue_drawing = input(menu_msg.get('continue_drawing')).strip().lower()
+            continue_drawing = input(request_data.get('continue_drawing')).strip().lower()
+
             if continue_drawing not in ['да', 'yes', 'y']:
-                print(menu_msg.get('Я буду скучать'))
+                print(menu_msg.get('Я буду скучать :( '))
                 break
 
 
-
-
 if __name__ == "__main__":
-    program = Program()
-    program.main()
+    Program.main()
